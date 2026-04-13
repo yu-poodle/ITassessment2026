@@ -3,56 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="Logo.png">
-    <title>TechSpace</title>
+    <title>Elite Builds | Home</title>
+    <link rel="icon" href="Logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-    <div class="container">
-        <header>
-        <nav>
-        <ul class="nav">
-            <li><a href="index.html">Home</a></li>
+
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="Logowhite-nobg.png" alt="Elite Builds Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="build.html">Builds</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contacts</a></li>
             <li><a href="about.html">About</a></li>
-            <li class="search-bar">
-                <input type="text" placeholder="Search components...">
-            </li>
         </ul>
-        </nav>
-        </header>
 
-        <main>
-        <section class="slider">
-            <div class ="slide-active">
-                <img src="slider1.png" alt="Putting Cpu Image">
-
-            <div class ="slide-content">
-                <h1>Level Up Your Setup</h1>
-                <p>Your ultimate destination for PC building and components.</p>
-                <div class="Buttons">
-                    <a href="build.html" class="btn-primary">View Builds</a>
-                    <a href="gallery.html" class="btn-secondary">Shop Parts</a>
-                </div>
-            </div>
-            </div>
-
-            <span class="arrow left">&#10094;</span>
-            <span class="arrow right">&#10095;</span>
-        </section>
-        </main>
-
-
-        <footer>
-            <div class="container">
-                <hr style="border: 0.5px solid #444; margin: 20px 0;">
-                <p>Created by: **Ujjwal Poudel** | Email: <a href="mailto:your-email@example.com" style="color: #A1E3D8;">pujjwal25@tbc.edu.np</a></p>
-                <p>For more hardware specs, visit <a href="https://www.pcpartpicker.com" target="_blank" style="color: #A1E3D8;">PCPartPicker</a>.</p>
-            </div>
-        </footer>
+        <div class="nav-search">
+            <input type="text" placeholder="Search Component..." class="search-bar">
         </div>
-    
+    </div>
+</nav>
+
+<header class="hero" id="hero-slider">
+    <div class="hero-content">
+        <h1>Level Up Your Setup</h1>
+        <p>Your ultimate destination for PC building and components.</p>
+        <div class="hero-btns">
+            <button class="btn-primary">View Builds</button>
+            <button class="btn-secondary">Shop Parts</button>
+        </div>
+    </div>
+
+    <div class="hero-pagination">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+</header>
+
+<section class="featured-build">
+    <div class="container build-flex">
+        <div class="build-image-container">
+            <img src="christian-wiediger-KV2vFOYItcY-unsplash.jpg" alt="High Quality PC Build" class="build-img">
+        </div>
+
+        <div class="build-text">
+            <h2>High Quality PC Builds</h2>
+            <p>
+                Experience the perfect synergy of raw power and refined aesthetics. 
+                We curate high-performance rigs using only tier-one components, 
+                ensuring your setup remains as cool as it is capable. Build a machine 
+                that reflects your ambition with hardware designed for the elite.
+            </p>
+            <button class="btn-primary">Learn More</button>
+        </div>
+    </div>
+</section>
+
+<section class="components-section">
+    <div class="container">
+        <h2 class="section-header">Explore <span class="highlight">Elite Components</span></h2>
+        <div class="header-underline"></div>
+
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="icon-box">
+                    <img src="CPU.png" alt="CPU">
+                </div>
+                <h3>POWERFUL CPUS</h3>
+                <p>-Core i9 & Ryzen 9<br>-Unlocked for overclocking<br>-Advanced Thermal Design</p>
+                <a href="#" class="btn-outline">View CPUS</a>
+            </div>
+
+            <div class="component-card">
+                <div class="icon-box">
+                    <img src="GPU.png" alt="GPU">
+                </div>
+                <h3>ELITE GPUS</h3>
+                <p>-RTX 40 & RX 7000 Series<br>-Maximize Gaming FPS<br>-Ray Tracing Ready</p>
+                <a href="#" class="btn-outline">View GPUS</a>
+            </div>
+
+            <div class="component-card">
+                <div class="icon-box">
+                    <img src="Ram.png" alt="RAM">
+                </div>
+                <h3>POWERFUL RAM & CABLES</h3>
+                <p>-High Speed DDR5 Kit<br>-Custom Sleeved Extension</p>
+                <a href="#" class="btn-outline">View RAM</a>
+            </div>
+
+            <div class="component-card">
+                <div class="icon-box">
+                    <img src="Storage.png" alt="Storage">
+                </div>
+                <h3>BLAZING FAST STORAGE</h3>
+                <p>-High End NVME SSDs<br>-Uncompromised Read</p>
+                <a href="#" class="btn-outline">View Storage</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<script>
+        const hero = document.getElementById('hero-slider');
+        const dots = document.querySelectorAll('.dot');
+
+        const images = [
+            'pc2.jpg',
+            'pc.jpg', 
+            'pc3.jpg' 
+        ];
+
+        let currentIndex = 0;
+
+        function updateSlider(index) {
+           
+            hero.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('${images[index]}')`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentIndex = index;
+        }
+
+        function currentSlide(index) {
+            updateSlider(index);
+        }
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlider(currentIndex);
+        }, 8000);
+
+    </script>
 </body>
 </html>
