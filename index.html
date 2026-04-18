@@ -141,5 +141,27 @@
         <p>&copy; 2026 Elite Builds. All Rights Reserved.</p>
     </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const heroSection = document.getElementById('hero-slider');
+    
+    const images = [
+        'Assests/pc7.jpg', 
+        'Assests/pc2.jpg',
+        'Assests/pc5.jpg'
+    ];
+
+    let currentIndex = 0;
+    const intervalTime = 8000; 
+
+    function changeBackground() {
+        heroSection.style.transition = "background-image 0.8s ease-in-out";
+        heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${images[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+    changeBackground();
+    setInterval(changeBackground, intervalTime);
+});
+</script>
 </body>
 </html>
